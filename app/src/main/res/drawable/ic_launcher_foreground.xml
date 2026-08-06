@@ -24,7 +24,7 @@
         android:pathData="M68,48m-3,0a3,3 0,1 1,6 0a3,3 0,1 1,-6 0"/>
     <!-- 微笑 -->
     <path
-        android:fillColor="none"
+        android:fillColor="#00000000"
         android:strokeColor="#666666"
         android:strokeWidth="2"
         android:pathData="M44,62 Q54,72 64,62"/>
