@@ -2,10 +2,10 @@ name: Build APK
 
 on:
   push:
-    branches: {{ default: main }}
-  paths-ignore:
-    - '**.md'
-    - 'LICENSE'
+    branches: [ main ]
+    paths-ignore:
+      - '**.md'
+      - 'LICENSE'
   workflow_dispatch:
 
 jobs:
