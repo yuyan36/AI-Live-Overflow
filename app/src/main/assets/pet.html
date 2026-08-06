@@ -13,7 +13,6 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    font-family: 'Segoe UI', sans-serif;
 }
 #pet-container {
     position: relative;
@@ -24,9 +23,8 @@ body {
     justify-content: center;
 }
 #pet-svg {
-    width: 100%;
-    height: 100%;
-    transition: transform 0.3s ease;
+    width: 80%;
+    height: 80%;
 }
 #bubble {
     position: absolute;
@@ -43,30 +41,13 @@ body {
     transition: opacity 0.3s ease, transform 0.3s ease;
     pointer-events: none;
     box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-    max-width: 150px;
-    overflow: hidden;
-    text-overflow: ellipsis;
 }
 #bubble.show {
     opacity: 1;
     transform: translateX(-50%) translateY(-5px);
 }
-#bubble.whisper {
-    background: rgba(200,200,200,0.8);
-    font-size: 10px;
-}
-#bubble.happy {
-    background: rgba(255,200,230,0.9);
-    color: #d6336c;
-}
-#bubble.angry {
-    background: rgba(255,100,100,0.9);
-    color: #fff;
-}
-#bubble.jealous {
-    background: rgba(100,200,100,0.9);
-    color: #2d6a2d;
-}
+.duck-body { animation: float 3s ease-in-out infinite; }
+.duck-eye { animation: blink 4s ease-in-out infinite; }
 @keyframes float {
     0%, 100% { transform: translateY(0px); }
     50% { transform: translateY(-3px); }
@@ -75,133 +56,42 @@ body {
     0%, 95%, 100% { transform: scaleY(1); }
     97% { transform: scaleY(0.1); }
 }
-@keyframes shake {
-    0%, 100% { transform: translateX(0); }
-    25% { transform: translateX(-3px); }
-    75% { transform: translateX(3px); }
-}
-@keyframes sleep {
-    0%, 100% { transform: scale(0.95); }
-    50% { transform: scale(1); }
-}
-@keyframes blush {
-    0%, 100% { opacity: 0.3; }
-    50% { opacity: 0.6; }
-}
-.pet-body {
-    animation: float 3s ease-in-out infinite;
-}
-.pet-eye {
-    animation: blink 4s ease-in-out infinite;
-}
-.state-happy .pet-body { animation: shake 0.5s ease-in-out; }
-.state-angry .pet-body { animation: shake 0.3s ease-in-out infinite; }
-.state-sleepy .pet-body { animation: sleep 2s ease-in-out infinite; }
-.state-blush .blush-overlay { animation: blush 1s ease-in-out infinite; }
 </style>
 </head>
 <body>
 <div id="pet-container">
     <div id="bubble"></div>
-    <svg id="pet-svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-        <!-- 身体 - 圆滚滚的小生物 -->
-        <ellipse class="pet-body" cx="50" cy="55" rx="30" ry="28" fill="#f0a0c0" opacity="0.9"/>
+    <svg id="pet-svg" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+        <!-- 麥输 -->
+        <ellipse class="duck-body" cx="100" cy="120" rx="60" ry="50" fill="#FFD338"/>
         
-        <!-- 脸红 -->
-        <ellipse class="blush-overlay" cx="35" cy="60" rx="8" ry="5" fill="#ff8a8a" opacity="0"/>
-        <ellipse class="blush-overlay" cx="65" cy="60" rx="8" ry="5" fill="#ff8a8a" opacity="0"/>
+        <!-- 奉田形 -->
+        <ellipse cx="100" cy="70" rx="40" ry="35" fill="#FFD338"/>
         
-        <!-- 眼睛 -->
-        <ellipse class="pet-eye" cx="38" cy="48" rx="5" ry="6" fill="#333"/>
-        <ellipse class="pet-eye" cx="62" cy="48" rx="5" ry="6" fill="#333"/>
-        <ellipse cx="40" cy="45" rx="2" ry="2" fill="#fff"/>
-        <ellipse cx="64" cy="45" rx="2" ry="2" fill="#fff"/>
+        <!-- 眼眙 -->
+        <circle class="duck-eye" cx="85" cy="65" r="7" fill="#333"/>
+        <circle class="duck-eye" cx="115" cy="65" r="7" fill="#333"/>
+        <circle cx="87" cy="63" r="3" fill="#fff"/>
+        <circle cx="117" cy="63" r="3" fill="#fff"/>
         
-        <!-- 嘴巴 - 默认微笑 -->
-        <path id="mouth" d="M 40 58 Q 50 65 60 58" stroke="#666" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+        <!-- 图守 -->
+        <path d="M 90 85 Q 100 95 110 85" stroke="#E59900" stroke-width="2" fill="none" stroke-linecap="round"/>
         
-        <!-- 小腮红 -->
-        <ellipse cx="32" cy="55" rx="4" ry="3" fill="#ffb0b0" opacity="0.4"/>
-        <ellipse cx="68" cy="55" rx="4" ry="3" fill="#ffb0b0" opacity="0.4"/>
+        <!-- ��形 -->
+        <path d="M 40 130 Q 20 150 35 180 Q 45 190 60 180" stroke="#FFD338" stroke-width="12" fill="none" stroke-linecap="round"/>
+        <path d="M 160 130 Q 180 150 165 180 Q 155 190 140 180" stroke="#FFD338" stroke-width="12" fill="none" stroke-linecap="round"/>
         
-        <!-- 小爪子 -->
-        <ellipse cx="22" cy="62" rx="6" ry="4" fill="#e890b0" opacity="0.7"/>
-        <ellipse cx="78" cy="62" rx="6" ry="4" fill="#e890b0" opacity="0.7"/>
+        <!-- 尿张 -->
+        <path d="M 5 120 Q 50 110 100 110 Q 150 110 195 120" stroke="#FFB300" stroke-width="8" fill="none" stroke-linecap="round"/>
         
-        <!-- 耳朵 -->
-        <ellipse cx="30" cy="32" rx="8" ry="10" fill="#e890b0" opacity="0.8"/>
-        <ellipse cx="70" cy="32" rx="8" ry="10" fill="#e890b0" opacity="0.8"/>
-        <ellipse cx="30" cy="32" rx="5" ry="7" fill="#f5c0d0" opacity="0.6"/>
-        <ellipse cx="70" cy="32" rx="5" ry="7" fill="#f5c0d0" opacity="0.6"/>
+        <!-- 尿一个 -->
+        <path d="M 95 80 Q 90 90 85 95" stroke="#E59900" stroke-width="2" fill="none" stroke-linecap="round"/>
+        <path d="M 105 80 Q 110 90 115 95" stroke="#E59900" stroke-width="2" fill="none" stroke-linecap="round"/>
+        
+        <!-- 尿精 -->
+        <circle cx="70" cy="110" r="10" fill="#FFD944" opacity="0.6"/>
+        <circle cx="130" cy="110" r="10" fill="#FFD944" opacity="0.6"/>
     </svg>
 </div>
-<script>
-let currentState = 'idle';
-let bubbleTimeout = null;
-
-function setState(state) {
-    currentState = state;
-    const container = document.getElementById('pet-container');
-    container.className = '';
-    
-    const svg = document.getElementById('pet-svg');
-    const mouth = document.getElementById('mouth');
-    const eyes = svg.querySelectorAll('.pet-eye');
-    const blush = svg.querySelectorAll('.blush-overlay');
-    
-    switch(state) {
-        case 'happy':
-            container.classList.add('state-happy');
-            mouth.setAttribute('d', 'M 38 56 Q 50 68 62 56');
-            eyes.forEach(e => { e.setAttribute('ry', '5'); });
-            break;
-        case 'angry':
-            container.classList.add('state-angry');
-            mouth.setAttribute('d', 'M 40 60 Q 50 56 60 60');
-            // 斜眼
-            eyes.forEach(e => { e.setAttribute('ry', '4'); });
-            break;
-        case 'sad':
-            mouth.setAttribute('d', 'M 42 62 Q 50 58 58 62');
-            eyes.forEach(e => { e.setAttribute('ry', '5'); e.setAttribute('cy', '50'); });
-            break;
-        case 'excited':
-            container.classList.add('state-happy');
-            mouth.setAttribute('d', 'M 36 54 Q 50 70 64 54');
-            eyes.forEach(e => { e.setAttribute('ry', '7'); });
-            break;
-        case 'sleepy':
-            container.classList.add('state-sleepy');
-            mouth.setAttribute('d', 'M 42 60 Q 50 58 58 60');
-            eyes.forEach(e => { e.setAttribute('ry', '2'); });
-            break;
-        case 'blush':
-            mouth.setAttribute('d', 'M 40 58 Q 50 63 60 58');
-            eyes.forEach(e => { e.setAttribute('ry', '5'); });
-            blush.forEach(b => { b.setAttribute('opacity', '0.5'); });
-            break;
-        case 'idle':
-        default:
-            mouth.setAttribute('d', 'M 40 58 Q 50 65 60 58');
-            eyes.forEach(e => { e.setAttribute('ry', '6'); e.setAttribute('cy', '48'); });
-            blush.forEach(b => { b.setAttribute('opacity', '0'); });
-            break;
-    }
-}
-
-function showBubble(message, style) {
-    const bubble = document.getElementById('bubble');
-    bubble.textContent = message;
-    bubble.className = 'show ' + (style || 'normal');
-    
-    if (bubbleTimeout) clearTimeout(bubbleTimeout);
-    bubbleTimeout = setTimeout(() => {
-        bubble.className = '';
-    }, 3000);
-}
-
-// 初始状态
-setState('idle');
-</script>
 </body>
 </html>
